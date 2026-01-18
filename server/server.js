@@ -2,8 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import  authRoutes  from "./routes/authRoutes.js";
-import { productRoutes } from "./routes/productRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 import { protect } from "./middleware/authMiddleware.js";
+import cartRoutes from "./routes/cartRoutes.js";
 
 
 dotenv.config();
@@ -19,6 +20,10 @@ app.use("/api/auth", authRoutes);
 
 //products
 app.use("/api/products", productRoutes);
+
+//cart
+app.use("/api/cart", cartRoutes);
+
 
 //test routes
 app.get('/',(req,res)=>{
